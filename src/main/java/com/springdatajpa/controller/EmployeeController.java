@@ -21,17 +21,17 @@ public class EmployeeController {
 
 	@Autowired
 	private EmployeeService service;
-	
-	
+
+
 	@PostMapping("/addEmployee") // single employee
 	public Employee addProduct(@RequestBody Employee employee)throws Exception  {
 		Optional<Employee> employeeEntry = service.checkEmployee(employee.getId()); 
-	    if(employeeEntry.isPresent()){
-	        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Employee already exist in the database!");
-	    } 
+		if(employeeEntry.isPresent()){
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Employee already exist in the database!");
+		} 
 		return service.saveEmployee(employee);
 	}
-	
+
 	@GetMapping("/employees") // get all employees
 	public List<Employee> findAllEmployee(){
 		return service.getEmployees();
@@ -40,10 +40,10 @@ public class EmployeeController {
 	public Employee findProductById(@PathVariable int id) {
 		return service.getEmployeeById(id);
 	}
-	
-	@PutMapping("/update/{id}") // update employee
-    public Employee updateEmployee(@RequestBody Employee employee) {
-        return service.updateEmployee(employee);
-    }
-		
+
+	@PutMapping("/update/{id}/{salary}") // update employee
+	public Employee updateEmployee(@PathVariable("id") Integer id, @PathVariable ("salary") Integer salary) {
+		return service.updateEmployee(salary,id);
+	}
+
 }

@@ -13,6 +13,7 @@ public class Employee {
 	@Id
 	@GeneratedValue
 	private int id;
+	
 	private String name;
 	private int salary;
 	private String designation;
@@ -46,9 +47,8 @@ public class Employee {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Employee(int id, String name, int salary, String designation) {
+	public Employee(String name, int salary, String designation) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.salary = salary;
 		this.designation = designation;
