@@ -13,7 +13,6 @@ public class Employee {
 	@Id
 	@GeneratedValue
 	private int id;
-	
 	private String name;
 	private int salary;
 	private String designation;
